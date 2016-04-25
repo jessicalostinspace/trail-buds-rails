@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
   resources :events
-  
 
+  get 'usersJSON' => 'users#renderUsersJSON'
+  get 'eventsJSON' => 'events#renderEventsJSON'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
