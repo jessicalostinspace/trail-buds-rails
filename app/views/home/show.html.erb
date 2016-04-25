@@ -1,0 +1,12 @@
+<h1>Home#show</h1>
+<p>Find me in app/views/home/show.html.erb</p>
+
+<div id="profile">
+   <h3>Welcome to your Rails App</h3>
+   <img src='https://graph.facebook.com/<%= @profile["id"] %>/picture' alt='picture'>
+   <div class="profile_info"> 
+      <h2><%= @profile["first_name"] %> <%= @profile["last_name"] %></h2>
+      <h3>Facebook ID: <%= @profile["id"] %></h3>
+      <h3>Email Address: <%= @profile["email"] %></h3>
+   </div> 
+</div>

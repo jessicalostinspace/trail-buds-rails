@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  def index
+  def index   
+
   end
 
   def new
@@ -19,7 +20,9 @@ class UsersController < ApplicationController
   end
 
   def show
+
   end
+
 
   def renderUsersJSON
     User.all
@@ -32,4 +35,6 @@ class UsersController < ApplicationController
 
 end
 
+
+ 
 
