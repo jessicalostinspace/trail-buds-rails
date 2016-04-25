@@ -1,32 +1,13 @@
 Rails.application.routes.draw do
-  get 'events/index'
 
-  get 'events/new'
+  resources :attendees
+  resources :users
+  resources :messages
+  resources :events
 
-  get 'events/create'
-
-  get 'events/update'
-
-  get 'events/edit'
-
-  get 'events/destroy'
-
-  get 'events/show'
-
-  get 'messages/index'
-
-  get 'messages/new'
-
-  get 'messages/show'
-
-  get 'messages/update'
-
-  get 'messages/edit'
-
-  get 'messages/destroy'
-
-  get 'messages/create'
-
+  get 'usersJSON' => 'users#renderUsersJSON'
+  get 'eventsJSON' => 'events#renderEventsJSON'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

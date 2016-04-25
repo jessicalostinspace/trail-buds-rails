@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    # Event.create(event_params)
   end
 
   def update
@@ -18,5 +19,16 @@ class EventsController < ApplicationController
   end
 
   def show
+  end
+
+  def renderEventsJSON
+    Event.all
+    render :json
+  end
+
+  private
+  def event_params
+    # user = User.find_by(facebook_id:params)
+    #user_id, name, trailName, meetingLocation, hikeDistance, elevationGain, hikeLocation, latitude, longitude, description, maxAttendees
   end
 end
