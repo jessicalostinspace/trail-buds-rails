@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  trailName: MyString
+  meetingLocation: MyString
+  hikeDistance: 9.99
+  elevationGain: 1
+  hikeLocation: MyString
+  latitude: 9.99
+  longitude: 9.99
+  description: MyText
+  user_id: 
+  maxAttendees: 1
+  eventDate: 2016-04-25 15:04:29
+
+two:
+  name: MyString
+  trailName: MyString
+  meetingLocation: MyString
+  hikeDistance: 9.99
+  elevationGain: 1
+  hikeLocation: MyString
+  latitude: 9.99
+  longitude: 9.99
+  description: MyText
+  user_id: 
+  maxAttendees: 1
+  eventDate: 2016-04-25 15:04:29
