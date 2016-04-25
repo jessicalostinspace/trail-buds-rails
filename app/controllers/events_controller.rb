@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    render text: "This is the homepage"
   end
 
   def new
@@ -15,7 +16,7 @@ class EventsController < ApplicationController
     else
       render json: "Event not Saved"
     end
-    
+
   end
 
   def update
