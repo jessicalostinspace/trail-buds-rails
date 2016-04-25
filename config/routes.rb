@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get 'usersJSON' => 'users#renderUsersJSON'
   get 'eventsJSON' => 'events#renderEventsJSON'
-  
+  root 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
