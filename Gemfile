@@ -6,6 +6,7 @@ gem 'rails-footnotes', '>= 4.0.0', '<5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'rails_12factor', group: :production
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
