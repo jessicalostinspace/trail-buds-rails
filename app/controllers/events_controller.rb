@@ -4,7 +4,7 @@ require 'bigdecimal'
 class EventsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
-  
+
   def index
     text = {"test": "test", "test1": "test1"}
     render json: text
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     maxAttendeesInt = maxAttendees.to_i
 
     #Got rid of name and event date for time being for testing purposes
-    event = Event.create(trailName:params[:trailName], hikeDistance:hikeDistanceDecimal, elevationGain:elevationGainInt, hikeLocation:params[:hikeLocation], latitude:latitudeDecimal, longitude:longitudeDecimal, description:params[:description], maxAttendees:maxAttendeesInt, user:User.find_by(facebook_id:facebook_idInt))
+    event = Event.create(trailName:params[:trailName], hikeLocation:params[:hikeLocation], latitude:latitudeDecimal, longitude:longitudeDecimal, description:params[:description], maxAttendees:maxAttendeesInt)
 
 
     Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
