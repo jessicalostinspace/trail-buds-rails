@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
     #Got rid of name and event date for time being for testing purposes
 
-    event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first)
+    event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first, eventDate:params[:eventDate])
 
     Attendee.create(user:User.where(facebook_id:params[:facebook_id].first), event: event)
 
