@@ -18,22 +18,22 @@ class EventsController < ApplicationController
     puts "Did it get to the create method??? Yes it did..."
     puts "***************"
 
-    hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
-    latitudeDecimal = BigDecimal.new(params[:latitude])
-    longitudeDecimal = BigDecimal.new(params[:longitude])
+    # hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
+    # latitudeDecimal = BigDecimal.new(params[:latitude])
+    # longitudeDecimal = BigDecimal.new(params[:longitude])
 
-    elevationGain = params[:elevationGain]
-    facebook_id = params[:facebook_id]
-    maxAttendees = params[:maxAttendees]
+    # elevationGain = params[:elevationGain]
+    # facebook_id = params[:facebook_id]
+    # maxAttendees = params[:maxAttendees]
 
-    elevationGainInt = elevationGain.to_i
-    facebook_idInt = facebook_id.to_i
-    maxAttendeesInt = maxAttendees.to_i
+    # elevationGainInt = elevationGain.to_i
+    # facebook_idInt = facebook_id.to_i
+    # maxAttendeesInt = maxAttendees.to_i
 
     #Got rid of name and event date for time being for testing purposes
     event = Event.create(trailName:params[:trailName])
 
-    Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
+    # Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
 
     # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
 
