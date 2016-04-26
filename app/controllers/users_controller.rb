@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def renderUsersJSON
     User.all
-    render :json
+    render json: users
   end
 
   private
