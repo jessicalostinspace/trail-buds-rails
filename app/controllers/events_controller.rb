@@ -31,13 +31,7 @@ class EventsController < ApplicationController
     maxAttendeesInt = maxAttendees.to_i
 
     #Got rid of name and event date for time being for testing purposes
-    event = Event.create(trailName:params[:trailName], hikeLocation:params[:hikeLocation], latitude:latitudeDecimal, longitude:longitudeDecimal, description:params[:description], maxAttendees:maxAttendeesInt)
-
-    puts "***************"
-    puts "***************"
-    puts event.errors.full_messages
-    puts "***************"
-    puts "***************"
+    event = Event.create(trailName:params[:trailName])
 
     Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
 
