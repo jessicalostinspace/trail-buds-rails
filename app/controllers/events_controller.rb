@@ -1,6 +1,3 @@
-require 'bigdecimal'
-
-
 class EventsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
@@ -19,7 +16,7 @@ class EventsController < ApplicationController
     puts "***************"
 
     # hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
-    latitudeDecimal = BigDecimal.new(params[:latitude])
+    # latitudeDecimal = BigDecimal.new(params[:latitude])
     # longitudeDecimal = BigDecimal.new(params[:longitude])
 
     # elevationGain = params[:elevationGain]
