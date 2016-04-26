@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 class EventsController < ApplicationController
   def index
     text = {"test": "test", "test1": "test1"}
@@ -12,10 +14,19 @@ class EventsController < ApplicationController
     puts "Did it get to the create method??? Yes it did..."
     puts "***************"
 
-    event = Event.create(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
-    event.save
+    hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
+    latitudeDecimal = BigDecimal.new(params[:latitude])
+    longitudeDecimal = BigDecimal.new(params[:longitude])
 
-    Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
+    elevationGainInt = params[:elevationGain].to_i
+    facebook_idInt = params[:facebook_id].to_i
+    maxAttendeesInt = params[:maxAttendees].to_i
+
+    #Got rid of name and event date for time being for testing purposes
+    event = Event.create(trailName:params[:trailName], hikeDistance:hikeDistanceDecimal, elevationGain:elevationGainInt, hikeLocation:params[:hikeLocation], latitude:latitudeDecimal, longitude:longitudeDecimal, description:params[:description], maxAttendees:maxAttendeesInt, user:User.find_by(facebook_id:facebook_idInt))
+
+
+    Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
 
     # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
 
