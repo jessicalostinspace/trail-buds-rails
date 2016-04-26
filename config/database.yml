@@ -83,4 +83,4 @@ production:
   <<: *default
   database: trailbuds_production
   username: ubuntu
-  # password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
+  #password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
