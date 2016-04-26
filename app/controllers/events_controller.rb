@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token
+
   def index
     text = {"test": "test", "test1": "test1"}
     render json: text
@@ -8,15 +11,36 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
+    puts "***************"
+    puts "Did it get to the create method??? Yes it did..."
+    puts "***************"
 
-    if event.save
-      # This query adds the host as an attendee of the event  
-      Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
-      render json: "Event Saved"
-    else
-      render json: "Event not Saved"
-    end
+    # hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
+    # latitudeDecimal = BigDecimal.new(params[:latitude])
+    # longitudeDecimal = BigDecimal.new(params[:longitude])
+
+    # elevationGain = params[:elevationGain]
+    # facebook_id = params[:facebook_id]
+    # maxAttendees = params[:maxAttendees]
+
+    # elevationGainInt = elevationGain.to_i
+    # facebook_idInt = facebook_id.to_i
+    # maxAttendeesInt = maxAttendees.to_i
+
+    #Got rid of name and event date for time being for testing purposes
+    event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.find_by(facebook_id:params[:facebook_id]))
+
+    # Attendee.create(user:User.find_by(facebook_id:facebook_idInt), event: event)
+
+    # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
+
+    # if event.save
+    #   # This query adds the host as an attendee of the event  
+    #   Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
+    #   render json: "Event Saved"
+    # else
+    #   render json: "Event not Saved"
+    # end
 
   end
 
