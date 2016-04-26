@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index   
+    users = User.all
+    render json: users
 
   end
 
@@ -25,8 +27,8 @@ class UsersController < ApplicationController
 
 
   def renderUsersJSON
-    User.all
-    render :json
+    users = User.all
+    render json: users
   end
 
   private

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
-    render text: "This is the homepage"
+    text = {"test": "test", "test1": "test1"}
+    render json: text
   end
 
   def new
@@ -26,6 +27,11 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    # Find the single event
+    event = Event.find(params[:id])
+
+    # If the host of the event is equal to the User with the facebook params passed in, destroy the event.
+    event.destroy if event.user == User.find_by(facebook_id:params[:facebook_id])
   end
 
   def show
