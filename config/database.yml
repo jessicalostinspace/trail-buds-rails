@@ -17,7 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  password: 
+  password:
+
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -84,3 +85,4 @@ production:
   database: trailbuds_production
   username: ubuntu
   #password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
+
