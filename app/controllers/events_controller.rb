@@ -18,9 +18,13 @@ class EventsController < ApplicationController
     latitudeDecimal = BigDecimal.new(params[:latitude])
     longitudeDecimal = BigDecimal.new(params[:longitude])
 
-    elevationGainInt = params[:elevationGain].to_i
-    facebook_idInt = params[:facebook_id].to_i
-    maxAttendeesInt = params[:maxAttendees].to_i
+    elevationGain = params[:elevationGain]
+    facebook_id = params[:facebook_id]
+    maxAttendees = params[:maxAttendees]
+
+    elevationGainInt = elevationGain.to_i
+    facebook_idInt = facebook_id.to_i
+    maxAttendeesInt = maxAttendees.to_i
 
     #Got rid of name and event date for time being for testing purposes
     event = Event.create(trailName:params[:trailName], hikeDistance:hikeDistanceDecimal, elevationGain:elevationGainInt, hikeLocation:params[:hikeLocation], latitude:latitudeDecimal, longitude:longitudeDecimal, description:params[:description], maxAttendees:maxAttendeesInt, user:User.find_by(facebook_id:facebook_idInt))
