@@ -8,6 +8,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    puts "***************"
+    puts "Did it get to the create method??? Yes it did..."
+    puts "***************"
 
     event = Event.create(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
 
