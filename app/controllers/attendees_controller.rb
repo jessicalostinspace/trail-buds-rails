@@ -8,4 +8,9 @@ class AttendeesController < ApplicationController
   	Attendee.where(event:Event.find(params["event_id"]), user:User.find_by(facebook_id:params[:facebook_id])).first.destroy
   end
 
+  def renderAttendeesJSON
+  	attendees = Attendee.all
+  	render json: attendees 
+  end
+
 end
