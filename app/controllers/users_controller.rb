@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # User.create(user_params)
+    User.create(user_params)
   end
 
   def update
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :facebook_id, :gender, :picture_url, :city, :state, :description, :coverPhotoURL)
   end
 
 end
