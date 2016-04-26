@@ -12,7 +12,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(user_params)
+    facebook_id = params[:facebook_id]
+
+      if User.exists?(facebook_id: facebook_id)
+        session[user_params]
+      else  
+        User.create(user_params)
+        session[user_params]
+      end
+
   end
 
   def update
