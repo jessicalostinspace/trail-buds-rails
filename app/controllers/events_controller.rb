@@ -8,15 +8,21 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
 
-    if event.save
-      # This query adds the host as an attendee of the event  
-      Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
-      render json: "Event Saved"
-    else
-      render json: "Event not Saved"
-    end
+    event = Event.create(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
+
+
+    Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
+
+    # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
+
+    # if event.save
+    #   # This query adds the host as an attendee of the event  
+    #   Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
+    #   render json: "Event Saved"
+    # else
+    #   render json: "Event not Saved"
+    # end
 
   end
 
