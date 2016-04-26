@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 
   def renderUsersJSON
-    User.all
+    users = User.all
     render json: users
   end
 
