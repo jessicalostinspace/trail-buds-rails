@@ -17,7 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+<<<<<<< HEAD
   password:
+=======
+  password: 
+>>>>>>> 243453f1275fddfc2233a5fced74e0bd7f55fd2d
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -30,7 +34,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: trailbuds
+  username: ubuntu
 
   # The password associated with the postgres role (username).
   #password:
@@ -83,4 +87,8 @@ production:
   <<: *default
   database: trailbuds_production
   username: ubuntu
+<<<<<<< HEAD
   #password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
+=======
+  # password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
+>>>>>>> 243453f1275fddfc2233a5fced74e0bd7f55fd2d
