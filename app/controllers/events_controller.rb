@@ -1,6 +1,10 @@
 require 'bigdecimal'
 
+
 class EventsController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token
+  
   def index
     text = {"test": "test", "test1": "test1"}
     render json: text
