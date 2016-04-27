@@ -11,37 +11,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    puts "***************"
-    puts "Did it get to the create method??? Yes it did..."
-    puts "***************"
 
-    # hikeDistanceDecimal = BigDecimal.new(params[:hikeDistance])
-    # latitudeDecimal = BigDecimal.new(params[:latitude])
-    # longitudeDecimal = BigDecimal.new(params[:longitude])
+    event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first, eventDate:params[:eventDate])
 
-    # elevationGain = params[:elevationGain]
-    # facebook_id = params[:facebook_id]
-    # maxAttendees = params[:maxAttendees]
-
-    # elevationGainInt = elevationGain.to_i
-    # facebook_idInt = facebook_id.to_i
-    # maxAttendeesInt = maxAttendees.to_i
-
-    #Got rid of name and event date for time being for testing purposes
-
-    event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first)
-
-    Attendee.create(user:User.where(facebook_id:params[:facebook_id].first), event: event)
-
-    # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
-
-    # if event.save
-    #   # This query adds the host as an attendee of the event  
-    #   Attendee.create(user:User.find_by(facebook_id:params[:facebook_id]), event: event)
-    #   render json: "Event Saved"
-    # else
-    #   render json: "Event not Saved"
-    # end
+    Attendee.create(user:User.where(facebook_id:params[:facebook_id]).first, event:event)
 
   end
 
