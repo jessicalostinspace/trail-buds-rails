@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = User.where(facebook_id:params[:id]).first.update(description:params[:description])
   end
 
   def edit

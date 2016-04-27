@@ -31,7 +31,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: ubuntu
+  # username: ubuntu
 
   # The password associated with the postgres role (username).
   #password:
@@ -83,6 +83,6 @@ test:
 production:
   <<: *default
   database: trailbuds_production
-  username: ubuntu
+  # username: ubuntu
   #password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
 
