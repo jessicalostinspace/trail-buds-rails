@@ -31,7 +31,9 @@ class EventsController < ApplicationController
 
     event = Event.create(trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first, eventDate:params[:eventDate])
 
-    Attendee.create(user:User.where(facebook_id:params[:facebook_id].first))
+
+
+    Attendee.create(user:User.where(facebook_id:params[:facebook_id]).first, event:event)
 
     # event = Event.new(name:params[:name], trailName:params[:trailName], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], latitude:params[:latitude], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], eventDate:params[:eventDate], user:User.find_by(facebook_id:params[:facebook_id]))
 
