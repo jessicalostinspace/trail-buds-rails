@@ -33,6 +33,7 @@ development:
   # the same name as the operating system user that initialized the database.
   username: 
 
+
   # The password associated with the postgres role (username).
   password:
 
@@ -84,5 +85,6 @@ production:
   <<: *default
   database: trailbuds_production
   username: 
+
   #password: <%= ENV['TRAILBUDS_DATABASE_PASSWORD'] %>
 
