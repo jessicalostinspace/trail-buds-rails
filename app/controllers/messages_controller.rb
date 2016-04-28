@@ -6,6 +6,9 @@ class MessagesController < ApplicationController
   end
 
   def show
+  
+    user = User.where('User.facebook_id = ?', params[:facebook_id])
+    messages = Message.joins(:sender, :receiver).where('receiver_id = ?', 2)
   end
 
   def update

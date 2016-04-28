@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'messages/index'
+
+  get 'messages/new'
+
+  get 'messages/show'
+
+  get 'messages/create'
+
+  get 'messages/update'
+
+  get 'messages/destroy'
+
+  get 'messages/edit'
+
   root 'home#index'
 
   resources :home

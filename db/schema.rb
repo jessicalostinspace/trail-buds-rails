@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426174532) do
+ActiveRecord::Schema.define(version: 20160428171850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20160426174532) do
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "messages", ["event_id"], name: "index_messages_on_event_id", using: :btree
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -63,4 +76,5 @@ ActiveRecord::Schema.define(version: 20160426174532) do
   add_foreign_key "attendees", "events"
   add_foreign_key "attendees", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "events"
 end
