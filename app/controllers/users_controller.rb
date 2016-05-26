@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    user = User.where(facebook_id:params[:id]).first
+    render json: user
   end
 
 
