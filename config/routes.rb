@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'usersJSON' => 'users#renderUsersJSON'
   get 'eventsJSON' => 'events#renderEventsJSON'
   get 'attendeesJSON' => 'attendees#renderAttendeesJSON'
+  get 'chat' => 'messages#chat'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
