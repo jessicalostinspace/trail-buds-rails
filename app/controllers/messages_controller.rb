@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
+
   def index
     messages = Message.all
 
@@ -16,12 +18,12 @@ class MessagesController < ApplicationController
 
     # grabs names and picture urls for table view of messages
     # puts them in msgArray
- Message.where(receiver_id: user.id).select(:sender_id).distinct.each { |mess| msgArr<<{first_name: mess.sender.first_name.to_s,  last_name:  mess.sender.last_name.to_s, picture_url: mess.sender.picture_url.to_s }}
+    Message.where(receiver_id: user.id).select(:sender_id).distinct.each { |mess| msgArr<<[first_name: mess.sender.first_name.to_s,  last_name:  mess.sender.last_name.to_s, picture_url: mess.sender.picture_url.to_s, facebook_id: mess.sender.facebook_id.to_s ]}
 
     render json: msgArr
 
   end
-
+ 
   def update
   end
 
@@ -32,7 +34,14 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.create(content: params[:content], receiver_id: params[:receiver_id], sender_id: params[:sender_id], event_id: params[:event_id])
+
+    sender = User.find_by facebook_id: params[:sender_id]
+    receiver = User.find_by facebook_id: params[:receiver_id]
+
+    Message.create(content: params[:content], receiver_id: receiver.id, sender_id: sender.id, event_id: params[:event_id])
+
+    puts message
+
   end
 
   def chat
