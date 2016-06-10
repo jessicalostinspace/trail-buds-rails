@@ -40,15 +40,18 @@ class MessagesController < ApplicationController
 
     Message.create(content: params[:content], receiver_id: receiver.id, sender_id: sender.id, event_id: params[:event_id])
 
-    puts message
-
   end
 
   def chat
-    user = User.find_by facebook_id: params[:facebook_id]
+    # person that is logged in
+    receiver = User.find_by facebook_id: params[:receiver_id]
+    #person clicked on message view controller
     sender = User.find_by facebook_id: params[:sender_id]
 
-    chat = Message.where("receiver_id = ? AND sender_id = ?", user.id, sender.id)
+    puts receiver.id
+    puts sender.id 
+
+    chat = Message.where("receiver_id = ? AND sender_id = ?", receiver.id, sender.id)
 
     render json: chat
   end
