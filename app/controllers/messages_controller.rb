@@ -35,10 +35,11 @@ class MessagesController < ApplicationController
 
   def create
 
+    #Sender id is logged in user
     sender = User.find_by facebook_id: params[:sender_id]
     receiver = User.find_by facebook_id: params[:receiver_id]
 
-    Message.create(content: params[:content], receiver_id: receiver.id, sender_id: sender.id, event_id: params[:event_id])
+    Message.create(content: params[:content], receiver_id: receiver.id, sender_id: sender.id, event_id: params[:event_id], sender_facebook_id: params[:sender_facebook_id])
 
   end
 
@@ -48,10 +49,7 @@ class MessagesController < ApplicationController
     #person clicked on message view controller
     sender = User.find_by facebook_id: params[:sender_id]
 
-    puts receiver.id
-    puts sender.id 
-
-    chat = Message.where("receiver_id = ? AND sender_id = ?", receiver.id, sender.id)
+    chat = Message.where("receiver_id = ? AND sender_id = ? OR receiver_id = ? AND sender_id = ?", receiver.id, sender.id, sender.id, receiver.id)
 
     render json: chat
   end
