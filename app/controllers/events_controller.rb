@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def create
 
-    user = User.find_by params[:facebook_id]
+    user = User.find_by facebook_id: params[:facebook_id]
 
     event = Event.create(host_name: user.first_name, trailName:params[:trailName], latitude:params[:latitude], meetingLocation:params[:meetingLocation], hikeDistance:params[:hikeDistance], elevationGain:params[:elevationGain], hikeLocation:params[:hikeLocation], longitude:params[:longitude], description:params[:description], maxAttendees:params[:maxAttendees], user:User.where(facebook_id:params[:facebook_id]).first, eventDate:params[:eventDate])
 
@@ -20,6 +20,9 @@ class EventsController < ApplicationController
   end
 
   def update
+    event = Event.find_by id: params[:id]
+
+    event.update(description: params[:description]) 
   end
 
   def edit
