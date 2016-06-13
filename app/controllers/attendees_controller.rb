@@ -11,7 +11,7 @@ class AttendeesController < ApplicationController
 
     attendeeArray = Array.new
 
-    event.attendees.joins(:user).each { |aten| atenArr<<aten.user.first_name.to_s, aten.user.picture_url.to_s, aten.user.facebook_id.to_s }
+    event.attendees.joins(:user).each { |aten| attendeeArray<<[first_name: aten.user.first_name.to_s, picture_url: aten.user.picture_url.to_s, facebook_id: aten.user.facebook_id.to_s] }
 
     render json: attendeeArray
 
